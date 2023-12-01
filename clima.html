@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    fetch('https://goweather.herokuapp.com/weather/Houston')
+        .then(response =>  response.json())
+        .then(data => console.log('la temperatura de la ciudad es '+data.temperature+' y la velocidad del viento es '+ data.wind)
+        ) </script>
+</head>
+<body>
+    
+</body>
+</html>
