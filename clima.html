@@ -3,14 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>clima</title>
     <script>
-    fetch('https://goweather.herokuapp.com/weather/Houston')
-        .then(response =>  response.json())
-        .then(data => console.log('la temperatura de la ciudad es '+data.temperature+' y la velocidad del viento es '+ data.wind)
-        ) </script>
+    function buscarCiudad(ciudad) {
+        fetch(`https://goweather.herokuapp.com/weather/${ciudad}`)
+          .then(response => response.json())
+          .then(data => {
+            console.log('La temperatura de ' + ciudad + ' es ' + data.temperature + ' y la velocidad del viento es ' + data.wind);
+      
+            if (data.temperature < '10°C') {
+              document.getElementById('imagen').src = "https://www.lavanguardia.com/files/content_image_mobile_filter/uploads/2017/02/01/5fa3cb9874a5a.jpeg";
+            } else {
+              document.getElementById('imagen').src = "https://static.wikia.nocookie.net/marveldatabase/images/8/88/Fantastic_Four_Vol_6_1_Human_Torch_Variant_Textless.jpg/revision/latest?cb=20180523100956";
+            }
+          })
+          .catch(error => console.error('Error al obtener datos:', error));
+      }
+      
+      buscarCiudad('oslo');
+      </script>
+    
 </head>
 <body>
-    
+    <p id="parrafo"></p>
+    <img id="imagen" src="" alt="">
 </body>
 </html>
